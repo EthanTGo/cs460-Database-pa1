@@ -1,21 +1,10 @@
-from user import User
-from database import Database
+from flask import Flask, render_template, url_for, request, redirect
+from login import my_user
 
-# database_one = Database()
-# database_two = Database()
-# print(database_one.connection_pool)
-# database_one.initialise()
-# print(database_two.connection_pool)
+app = Flask(__name__)
 
-#
-# print(Database.connection_pool)
-#
-# Database.initialise()
-#
-# print(Database.connection_pool)
+@app.route('/', methods = ['POST', 'GET'])
+def homepage():
+    return render_template('home.html', user = my_user)
 
-Database.initialise(user='postgres', password='1234', database='learning',
-                                                               host='localhost', port="5433")
-
-my_user = User.load_from_db_by_email('petergilbert@nu.edu')
-print(my_user)
+app.run(port=4995)
