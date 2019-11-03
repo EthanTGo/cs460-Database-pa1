@@ -1,5 +1,5 @@
 # cs460-Database-pa1
-This is a programming assignment submission for cs460 is Boston University
+This is a programming assignment submission for cs460 at Boston University
 
 
 Author: Ethan Timoteo and Mina Horner
