@@ -1,0 +1,134 @@
+<html>
+<head>
+    <title>CS460 PA1</title>
+    <style type="text/css">
+			#main_header{
+				text-align: center;
+				background-color: #DA3825;
+				color: white;
+				padding: 2px;
+				font-family: Arial, Helvetica;
+			}
+
+			body{
+				font-family: Arial, Helvetica;
+			}
+
+			#schemas{
+				padding-left: 200px;
+				padding-right: 200px;
+			}
+			#queries{
+				width: 50%;
+				text-align: center;
+				float: left
+			}
+			#results{
+				width: 50%;
+				text-align: center;
+				float: right;
+			}
+			#schema_text{
+				text-align: center;
+			}
+
+    </style>
+    <header id="main_header">
+        <h1>CS460 PA1</h1>
+        <p>Mina Horner and Ethan Timoteo</p>
+    </header>
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+<div id="schemas">
+    <p id="schema_text">
+        Schemas:<br>
+    </p>
+    <p>
+        <b>business</b> (business_id: varChar(50), full_address: varChar(200), active: boolean, categories:
+        charVar(200), city: charVar(50), review_count: int, business_name: varChar(200), state: varChar(2), stars:
+        double)
+        <br>
+        <b>checkins</b> (business_id: varChar(50), Sunday: int, Monday: int, Tuesday: int, Wednesday: int, Thursday:
+        int, Friday: int, Saturday: int)
+        <br>
+        <b>reviews</b> (review_id: varChar(50), business_id: varChar(50), user_id: varChar(50), stars: int, review_date:
+        varChar(20), votes_funny: int, votes_useful: int, votes_cool: int, review_text: varChar(5000))
+        <br>
+        <b>users</b> (user_id: varChar(50), votes_funny: int, votes_useful: int, votes_cool: int, uname: varChar(50),
+        average_stars: double, review_count: int)
+
+    </p>
+
+</div>
+<div class="topnav">
+    <a class="active" href="{{ url_for('homepage') }}">Home</a>
+    <a href="{{ url_for('add') }}">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+</div>
+<p>
+
+</p>
+{% block body %}{% endblock %}
+<div id="queries">
+    <form>
+        Query<br>
+        <textarea name="query" rows="6" cols="100"></textarea>
+        <button>Query</button>
+    </form>
+    <form>
+        <!--<select id = "insertIntoTable">
+            <option value = "0">Business</option>
+            <option value = "1">Checkins</option>
+            <option value = "2">Reviews</option>
+            <option value = "3">Users</option>
+        </select>
+    -->
+        Insert into Table <br>
+        <textarea name="table" rows="6" cols="100" id="insertTextArea"></textarea>
+        <button>Insert</button>
+    </form>
+    <form>
+        <!--<select name = "deleteFromTable">
+            <option value = "0">Business</option>
+            <option value = "1">Checkins</option>
+            <option value = "2">Reviews</option>
+            <option value = "3">Users</option>
+        </select>
+    -->
+        Delete from Table <br>
+        <textarea name="deleteTextArea" rows="6" cols="100"></textarea>
+        <button>Delete</button>
+    </form>
+    <form>
+        User Check In<br>
+        User
+        <input type="text" name="checksinUser_id" placeholder="(user_id)">
+        checks into
+        <input type="text" name="checksinBusiness_id" placeholder="(business_id)">
+        on
+        <input type="text" name="checksInDayOfWeek" size="8" placeholder="(day of week)">
+        ,
+        <input type="text" name="checksinDate" size="10" placeholder="(DD/MM/YYYY)">
+        <button>Check In</button>
+    </form>
+    <form>
+        Write Review<br>
+        User ID:
+        <input type="text" name="reviewUser_id" placeholder="(user_id)">
+        <br>
+        <textarea rows="4" cols="75" placeholder="review text"></textarea>
+        <button>Review</button>
+    </form>
+</div>
+
+<div id="results">
+    <br>
+    Result
+    <br>
+    <textarea rows="40" cols="100"></textarea>
+</div>
+</body>
+</html>
