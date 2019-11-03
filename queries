@@ -1,0 +1,60 @@
+1.
+select *
+from users U
+where U.review_count >= 1
+
+
+2.
+select U.uname
+from users U
+where U.review_count <= 2
+
+3.
+select *
+from business B
+where B.active = false 
+
+4.
+select B.business_name
+from business B
+where B.stars >= 4
+	and categories = 'Pizza Restaurants'
+
+5.
+select count(C.Friday)
+from checkins C
+where C.Friday > 0
+
+6.
+select R.review_text
+from reviews R, business B
+where R.business_id = B.business_id
+	and B.business_name = 'Arcadia Tavern'
+
+7.
+select B.business_name 
+from business B, reviews R
+where B.business_id = R.business_id
+	and (R.stars = 1 or R.stars = 2)
+
+8.
+select avg(B.stars), sum(B.review_count)
+from business B
+where B.business_name = 'KFC' or B.business_name = 'Kfc'
+
+9.
+select B.business_id
+from business B 
+order by B.review_count desc
+limit 10
+
+10.
+select U.uname 
+from users U
+where U.review_count = (select max(U2.review_count)
+			from users U2)
+
+
+
+
+
