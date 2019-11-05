@@ -38,9 +38,10 @@
         <h1>CS460 PA1</h1>
         <p>Mina Horner and Ethan Timoteo</p>
         <div class="topnav">
-            <a class="active" href="{{ url_for('homepage') }}">Query</a>
+            <a class="active" href="{{ url_for('homepage') }}">Select</a>
             <a href="{{ url_for('check_in') }}">Checks in</a>
             <a href="{{ url_for('write_review') }}">Write Review</a>
+            <a href="{{ url_for('insertion') }}">Insert/Delete</a>
         </div>
     </header>
 </head>
@@ -71,7 +72,7 @@
 </p>
 <div id="queries">
     <form action="/" method="POST">
-        Query, Insert, or Delete<br><br>
+        Select<br><br>
         <textarea name="content" rows="30" cols="100"></textarea>
         <br><br>
         <button>Query</button>

@@ -21,6 +21,17 @@ def homepage():
     else:
         return render_template('pa1_website_QID.html', header='Welcome enter your query', result='')
 
+@app.route('/add_del', methods=['POST', 'GET'])
+def insertion():
+    if request.method == 'POST':
+        task_content = request.form['content']
+        try:
+            add_query(task_content)
+            return render_template('pa1_website_QID_insertdelete.html', header='Executed Successfully', result='')
+        except:
+            return render_template('pa1_website_QID_insertdelete.html', header='Something went wrong', result='')
+    else:
+        return render_template('pa1_website_QID_insertdelete.html', header='Welcome enter your query', result='')
 
 @app.route('/checks_in', methods=['POST', 'GET'])
 def check_in():
@@ -72,7 +83,7 @@ def write_review():
             try:
                 add_query(to_add)
                 result = retrieve_info('select * from reviews')
-                add_query("update users set review_count = review_count + 1 where user_id = '" + user_id  +"'")
+                add_query("update users set review_count = review_count + 1 where user_id = '" + user_id + "'")
                 return render_template('pa1_website_writeReview.html', header='Executed successfully', result=result)
             except:
                 return render_template('pa1_website_writeReview.html', header='Something went wrong', result='')
